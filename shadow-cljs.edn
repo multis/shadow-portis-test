@@ -13,6 +13,10 @@
         :output-dir "public/js/compiled"
         :asset-path "/js/compiled"
 
+        :js-options
+        {:resolve {"@portis/web3" {:target :global
+                            :global "Portis"}}}
+
         :modules
         {:main
          {:entries [portis-shadow.core]}}
