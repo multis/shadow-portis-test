@@ -1,7 +1,6 @@
 (ns portis-shadow.core
   (:require [reagent.core :as reagent :refer [atom]]
-            ["@portis/web3" :as Portis])
-  )
+            ["web3" :as Web3]))
 
 ;; define your app data so that it doesn't get over-written on reload
 
@@ -13,10 +12,12 @@
    [:h3 "Edit this and watch it change! yeaaa"]])
 
 (defn start []
-  (let [portis (new Portis "portis-app-id" "ropsten")])
-  ; (let [portis (new Portis "f9925b14-b16b-4fdb-bb31-fad887decd67" "ropsten")])
-  (reagent/render-component [hello-world]
-                            (. js/document (getElementById "app"))))
+  (let [portis (new js/Portis "211b48db-e8cc-4b68-82ad-bf781727ea9e" "mainnet")
+        w3 (new Web3 portis.provider)]
+    (do
+      (.enable portis.provider)
+      (reagent/render-component [hello-world]
+                                (. js/document (getElementById "app"))))))
 
 (defn ^:export init []
   ;; init is called ONCE when the page loads

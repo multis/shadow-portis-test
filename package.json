@@ -7,7 +7,7 @@
     "clean": "rm -rf target; rm -rf public/js/compiled"
   },
   "dependencies": {
-    "@portis/web3": "^2.0.0-beta.26",
+    "web3": "0.20.6",
     "create-react-class": "^15.6.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
